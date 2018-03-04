@@ -1,0 +1,11 @@
+{
+    "modelPackage": "com.mmcgarvey.big.ideas.models",
+    "apiPackage": "com.mmcgarvey.big.ideas.api",
+    "invokerPackage": "com.mmcgarvey.big.ideas",
+    "groupId": "com.mmcgarvey",
+    "artifactId": "big-ideas-sdk",
+    "artifactVersion": "1.3.2",
+    "artifactDescription": "Client SDK for the Big Ideas API",
+    "sourceFolder": "src/main/java",
+    "dateLibrary": "java8"
+}

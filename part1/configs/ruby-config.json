@@ -1,0 +1,8 @@
+{
+  "gemName": "big_ideas_api",
+  "moduleName": "BigIdeasAPI",
+  "httpUserAgent": "Big-Ideas-Ruby/1.3.2",
+  "gemVersion": "1.3.2",
+  "gemAuthor": "Matthew McGarvey",
+  "gemDescription": "Ruby client library for the Big Ideas API"
+}

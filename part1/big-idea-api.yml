@@ -1,0 +1,120 @@
+swagger: "2.0"
+info:
+  title: "Big Idea API"
+  version: "1.0"
+  description: "API to create and manage any and all of your big ideas...and we promise not to steal any!"
+  contact:
+    name: "Matthew McGarvey"
+    url: "https://github.com/matthewmcgarvey"
+    email: "matthewmcgarvey14@gmail.com"
+schemes:
+  - http
+host: "localhost:4080"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+tags:
+  - name: "BigIdea"
+paths:
+  "/big-ideas":
+    get:
+      summary: Get All Your Big Ideas
+      operationId: getAll
+      parameters:
+        - in: query
+          name: limit
+          description: Choose how many big ideas you want back (if not specified, all will be returned)
+          type: integer
+          required: false
+          minimum: 1
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BigIdea'
+        400:
+          description: Bad Request (limit incorrect)
+    post:
+      summary: Create A Big Idea
+      operationId: create
+      parameters:
+        - in: body
+          name: bigIdea
+          required: true
+          schema:
+            $ref: '#/definitions/BigIdea'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/BigIdea'
+  "/big-ideas/{id}":
+    parameters:
+      - in: path
+        name: id
+        description: ID of specific Big Idea
+        type: integer
+        required: true
+        minimum: 1
+    get:
+      summary: Get A Big Idea By ID
+      operationId: get
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BigIdea'
+        400:
+          description: Not a valid ID
+        404:
+          description: Big Idea not found
+    delete:
+      summary: Delete a Big Idea by ID
+      operationId: delete
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BigIdea'
+        400:
+          description: Not a valid ID
+        404:
+          description: No Big Idea by that name
+    put:
+      summary: Update Rating of a Big Idea by ID
+      operationId: update
+      parameters:
+        - in: body
+          name: updatedBigIdea
+          required: true
+          schema:
+            $ref: '#/definitions/BigIdea'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/BigIdea'
+        404:
+          description: No Big Idea by that ID
+        400:
+          description: Bad Request
+
+definitions:
+  BigIdea:
+    type: object
+    properties:
+      name:
+        type: string
+      id:
+        type: integer
+        minimum: 1
+        readOnly: true
+      details:
+        type: string
+      rating:
+        type: integer
+        maximum: 10
+        minimum: 1
