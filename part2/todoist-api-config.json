@@ -1,0 +1,12 @@
+{
+    "modelPackage": "com.mmcgarvey.todoist.client.models",
+    "apiPackage": "com.mmcgarvey.todoist.client.api",
+    "invokerPackage": "com.mmcgarvey.todoist.client",
+    "groupId": "com.mmcgarvey",
+    "artifactId": "todoist-client",
+    "artifactVersion": "1.0.0",
+    "artifactDescription": "Client SDK for the todoist API",
+    "sourceFolder": "src/main/java",
+    "dateLibrary": "java8",
+    "library": "feign"
+}

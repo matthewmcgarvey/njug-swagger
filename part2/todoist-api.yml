@@ -1,0 +1,325 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Todoist API
+  description: Custom Todoist API
+schemes:
+  - https
+host: beta.todoist.com
+basePath: /API/v8
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /projects:
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getAllProjects
+      description: Get All Projects
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Project'
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: createProject
+      description: Create a new project
+      parameters:
+        - in: body
+          name: projectToCreate
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Project'
+  '/projects/{id}':
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: string
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getProject
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Project'
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: updateProject
+      responses:
+        204:
+          description: No Content
+    delete:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: deleteProject
+      responses:
+        204:
+          description: No Content
+  /tasks:
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getTasks
+      parameters:
+        - in: query
+          required: false
+          name: project_id
+          type: number
+          format: int64
+        - in: query
+          required: false
+          name: label_id
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Task'
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: createTask
+      parameters:
+        - in: body
+          required: true
+          name: task
+          schema:
+            $ref: '#/definitions/TaskToCreate'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Task'
+  '/tasks/{id}':
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: number
+        format: int64
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getTask
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Task'
+  '/tasks/{id}/close':
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: number
+        format: int64
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: closeTask
+      responses:
+        204:
+          description: No Content
+  '/labels':
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getLabels
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Label'
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: createLabel
+      parameters:
+        - in: body
+          name: labelToCreate
+          schema:
+            $ref: '#/definitions/Label'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Label'
+  '/labels/{id}':
+    parameters:
+      - in: path
+        required: true
+        name: id
+        type: number
+        format: int64
+    get:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: getLabel
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Label'
+    post:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: updateLabel
+      parameters:
+        - in: body
+          required: true
+          name: label
+          schema:
+            $ref: '#/definitions/Label'
+      responses:
+        204:
+          description: No Content
+    delete:
+      tags:
+        - Todoist
+      security:
+        - Bearer: []
+      operationId: deleteLabel
+      responses:
+        204:
+          description: No Content
+
+definitions:
+  Project:
+    properties:
+      comment_count:
+        type: integer
+      id:
+        type: number
+        format: int64
+      indent:
+        type: integer
+        readOnly: true
+      name:
+        type: string
+      order:
+        type: integer
+        readOnly: true
+  Task:
+    properties:
+      comment_count:
+        type: integer
+      completed:
+        type: boolean
+      content:
+        type: string
+      due:
+        $ref: '#/definitions/Due'
+      id:
+        type: number
+        format: int64
+      indent:
+        type: integer
+      label_ids:
+        type: array
+        items:
+          type: integer
+      order:
+        type: integer
+      priority:
+        type: integer
+      project_id:
+        type: number
+        format: int64
+      url:
+        type: string
+  Due:
+    properties:
+      date:
+        type: string
+        format: date
+      recurring:
+        type: boolean
+      datetime:
+        type: string
+        format: date-time
+      string:
+        type: string
+      timezone:
+        type: string
+  TaskToCreate:
+    properties:
+      content:
+        type: string
+      due_date:
+        type: string
+        format: date
+      priority:
+        type: integer
+        minimum: 1
+        maximum: 4
+      due_string:
+        type: string
+      project_id:
+        type: number
+        format: int64
+      label_ids:
+        type: array
+        items:
+          type: integer
+  Label:
+    properties:
+      id:
+        type: number
+        format: int64
+        readOnly: true
+      name:
+        type: string
+      order:
+        type: integer
