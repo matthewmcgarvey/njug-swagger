@@ -10,15 +10,16 @@ info:
 schemes:
   - http
 host: "localhost:4080"
+basePath: "/big-ideas"
 consumes:
   - "application/json"
 produces:
   - "application/json"
-tags:
-  - name: "BigIdea"
 paths:
-  "/big-ideas":
+  "/":
     get:
+      tags:
+        - "BigIdea"
       summary: Get All Your Big Ideas
       operationId: getAll
       parameters:
@@ -38,6 +39,8 @@ paths:
         400:
           description: Supplied limit was incorrect
     post:
+      tags:
+        - "BigIdea"
       summary: Create A Big Idea
       operationId: create
       parameters:
@@ -51,7 +54,7 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/BigIdea'
-  "/big-ideas/{id}":
+  "/{id}":
     parameters:
       - in: path
         name: id
@@ -60,6 +63,8 @@ paths:
         required: true
         minimum: 1
     get:
+      tags:
+        - "BigIdea"
       summary: Get A Big Idea By ID
       operationId: get
       responses:
@@ -72,6 +77,8 @@ paths:
         404:
           description: Big Idea not found
     delete:
+      tags:
+        - "BigIdea"
       summary: Delete a Big Idea by ID
       operationId: delete
       responses:

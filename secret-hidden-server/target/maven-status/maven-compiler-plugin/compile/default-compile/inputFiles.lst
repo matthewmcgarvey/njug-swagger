@@ -1,0 +1,14 @@
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/BigIdeasApiController.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/NotFoundException.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/ApiException.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/configuration/HomeController.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/ApiOriginFilter.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/RFC3339DateFormat.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/ApiResponseMessage.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/Database.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/configuration/JacksonConfiguration.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/api/BigIdeasApi.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/model/BigIdea.java
+/Users/matthew/workspace/java/njug-swagger/secret-hidden-server/src/main/java/io/swagger/Swagger2SpringBoot.java
