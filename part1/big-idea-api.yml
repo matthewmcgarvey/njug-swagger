@@ -36,7 +36,7 @@ paths:
             items:
               $ref: '#/definitions/BigIdea'
         400:
-          description: Bad Request (limit incorrect)
+          description: Supplied limit was incorrect
     post:
       summary: Create A Big Idea
       operationId: create
@@ -118,3 +118,8 @@ definitions:
         type: integer
         maximum: 10
         minimum: 1
+    example:
+      name: Rule the World
+      id: 1045
+      details: Just do it
+      rating: 8
