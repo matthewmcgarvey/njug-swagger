@@ -24,6 +24,7 @@
             <groupId>com.mmcgarvey</groupId>
             <artifactId>todoist-client</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.shell</groupId>
