@@ -2,3 +2,6 @@
 **/*.iml
 **/*.swagger-codegen
 **/.DS_Store
+**/target
+**/part2/todoist-client
+**/spring-shell.log
